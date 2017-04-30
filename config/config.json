@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "123456",
+    "database": "auth.service",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "jwt_secret": "JnLRmvCURZFqHeJiYksaCwdqjwndUBMeNHbvp7z9zvw8QMU4LugZpyXInADb"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
