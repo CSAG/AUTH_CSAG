@@ -10,7 +10,7 @@ module.exports = {
                     primaryKey: true,
                     autoIncrement: true
                 },
-                email: {
+                username: {
                     type: Sequelize.STRING,
                     unique: true
                 },
@@ -23,7 +23,7 @@ module.exports = {
                 lastname: {
                     type: Sequelize.STRING
                 },
-                tel: {
+                image: {
                     type: Sequelize.STRING
                 },
                 gender: {
@@ -45,6 +45,7 @@ module.exports = {
     },
 
     down: function (queryInterface, Sequelize) {
+      queryInterface.dropTable('users')
         /*
          Add reverting commands here.
          Return a promise to correctly handle asynchronicity.

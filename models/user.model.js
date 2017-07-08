@@ -4,7 +4,7 @@
 import Connection, {Sequelize} from './model'
 
 export const User = Connection.define('users', {
-    email: {
+    username: {
         type: Sequelize.STRING,
         unique: true
     },
@@ -17,7 +17,7 @@ export const User = Connection.define('users', {
     lastname: {
         type: Sequelize.STRING
     },
-    tel: {
+    image: {
         type: Sequelize.STRING
     },
     gender: {
@@ -30,4 +30,3 @@ export const User = Connection.define('users', {
     underscored: true,
     freezeTableName: true // Model tableName will be the same as the model name
 });
-
