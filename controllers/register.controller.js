@@ -7,8 +7,6 @@ import JWT from 'jsonwebtoken'
 const env       = process.env.NODE_ENV || 'development';
 const config    = require('./../config/config.json')[env];
 const Register = function (req, res) {
-  console.log(config.jwt_secret);
-
     User
         .findAndCountAll({
             where: {
@@ -47,7 +45,7 @@ const Register = function (req, res) {
                                 image: req.body.image,
                                 gender: req.body.gender,
                                 birthday: req.body.birthday
-                            },config.jwt_secret , { expiresIn: '1' })
+                     },config.jwt_secret , { expiresIn: '1h' })
 
                         res.status(200).send({
                             success: true,
@@ -65,7 +63,7 @@ const Register = function (req, res) {
             } else {
                 return res.status(400).send({
                     success: false,
-                    code: "USER_IS_ALREADY"
+                    message: "USER_IS_ALREADY"
                 });
             }
 
