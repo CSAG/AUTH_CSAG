@@ -22,22 +22,22 @@ const Users = function (req, res) {
              if(req.body.firstname){
                  User.update( 
                 { firstname: req.body.firstname } /* set attributes' value */, 
-                { where: { username : decoded.username }} /* where criteria */)
+                { where: { username : decoded.username }} /* where criteria */).then(function(affectedRows) {})
             }
              if(req.body.lastname){
                  User.update( 
                 { lastname: req.body.lastname } /* set attributes' value */, 
-                { where: { username : decoded.username }} /* where criteria */)
+                { where: { username : decoded.username }} /* where criteria */).then(function(affectedRows) {})
             }
              if(req.body.gender){
                  User.update( 
                 { gender: req.body.gender } /* set attributes' value */, 
-                { where: { username : decoded.username }} /* where criteria */)
+                { where: { username : decoded.username }} /* where criteria */).then(function(affectedRows) {})
             }
              if(req.body.image){
                  User.update( 
                 { image: req.body.image } /* set attributes' value */, 
-                { where: { username : decoded.username }} /* where criteria */)
+                { where: { username : decoded.username }} /* where criteria */).then(function(affectedRows) {})
             }
              if(req.body.birthday){
                 let rules = {
@@ -48,7 +48,7 @@ const Users = function (req, res) {
                 validation.passes(function () {
                  User.update( 
                 { birthday: req.body.birthday } /* set attributes' value */, 
-                { where: { username : decoded.username }} /* where criteria */)
+                { where: { username : decoded.username }} /* where criteria */).then(function(affectedRows) {})
                })
                validation.fails(function () {
                     res.status(400).send(validation.errors);
@@ -72,6 +72,10 @@ const Users = function (req, res) {
          case "newpass":
                     break;
          case "add_contact":
+                    break;
+         case "mail_confirm":
+                    break;
+         case "kmitl_confirm":
                     break;
          default:
                 
