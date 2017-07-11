@@ -13,16 +13,63 @@ const Users = function (req, res) {
       if (err) {
             res.status(400).json({ success: false, message: 'Failed_to_authenticate_token' });    
       } else {
+
          switch(req.body.action) {
          case "forgetpass":
                     break;
          case "update":
-             res.status(200).send({
-             success: true,
-             data: decoded.username
-             });
+                 
+             if(req.body.firstname){
+                 User.update( 
+                { firstname: req.body.firstname } /* set attributes' value */, 
+                { where: { username : decoded.username }} /* where criteria */)
+            }
+             if(req.body.lastname){
+                 User.update( 
+                { lastname: req.body.lastname } /* set attributes' value */, 
+                { where: { username : decoded.username }} /* where criteria */)
+            }
+             if(req.body.gender){
+                 User.update( 
+                { gender: req.body.gender } /* set attributes' value */, 
+                { where: { username : decoded.username }} /* where criteria */)
+            }
+             if(req.body.image){
+                 User.update( 
+                { image: req.body.image } /* set attributes' value */, 
+                { where: { username : decoded.username }} /* where criteria */)
+            }
+             if(req.body.birthday){
+                let rules = {
+                   birthday: 'required|date'
+                };
+
+                let validation = new Validator(req.body, rules);
+                validation.passes(function () {
+                 User.update( 
+                { birthday: req.body.birthday } /* set attributes' value */, 
+                { where: { username : decoded.username }} /* where criteria */)
+               })
+               validation.fails(function () {
+                    res.status(400).send(validation.errors);
+                });       
+              }
+                User.findOne({ where: {username: decoded.username} }).then(function(User) {
+                let arrays = User;
+                delete arrays.dataValues.password;
+                delete arrays.password;
+                res.status(200).send({
+                success: true,
+                data: arrays
+               });
+             })
+           
                     break;
          case "add_address":
+                    break;
+         case "add_contact":
+                    break;
+         case "newpass":
                     break;
          case "add_contact":
                     break;
