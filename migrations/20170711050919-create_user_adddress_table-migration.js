@@ -2,8 +2,8 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    queryInterface.createTable(
-        'tokens',
+        queryInterface.createTable(
+        'user_addresss',
         {
             id: {
                 type: Sequelize.INTEGER,
@@ -11,19 +11,19 @@ module.exports = {
                 autoIncrement: true
             },
             user_id: {
-                type: Sequelize.INTEGER,
+                type: Sequelize.INTEGER
             },
-            action: {
+            address: {
                 type: Sequelize.STRING
             },
-            token: {
+            sub_district: {
                 type: Sequelize.STRING
             },
-            expire: {
-                type: Sequelize.DATE
+            district: {
+                type: Sequelize.STRING
             },
-            timestamp: {
-                type: Sequelize.DATE
+            provinc: {
+                type: Sequelize.STRING
             },
             created_at: {
                 type: Sequelize.DATE
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   down: function (queryInterface, Sequelize) {
-      queryInterface.dropTable('tokens')
+      queryInterface.dropTable('user_addresss')
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.

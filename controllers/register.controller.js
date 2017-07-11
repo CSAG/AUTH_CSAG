@@ -12,45 +12,47 @@ const Register = function (req, res) {
     User
         .findAndCountAll({
             where: {
-                email: req.body.email
+                username: req.body.username
             }
         })
         .then(function (result) {
             if (result.count === 0) {
 
                 const rules = {
-                    email: 'required|email',
+                    username: 'required',
                     password: 'required',
                     firstname: 'required',
                     lastname: 'required',
-                    tel: 'required|size:10',
+                    image: 'required',
                     gender: 'required',
-                    birthday: 'required'
+                    birthday: 'required|date'
 
                 };
 
                 let validation = new Validator(req.body, rules);
                 validation.passes(function () {
                     User.create({
-                        email: req.body.email,
+                        username: req.body.username,
                         password: req.body.password,
                         firstname: req.body.firstname,
                         lastname: req.body.lastname,
-                        tel: req.body.tel,
+                        image: req.body.image,
                         gender: req.body.gender,
                         birthday: req.body.birthday
                     }).then(function (succcess) {
 
-                        res.status(200).send({
-                            success: true,
-                            data: succcess,
-                            token: JWT.sign({  email: req.body.email,
+                      let tokens = JWT.sign({  username: req.body.username,
                                 firstname: req.body.firstname,
                                 lastname: req.body.lastname,
-                                tel: req.body.tel,
+                                image: req.body.image,
                                 gender: req.body.gender,
                                 birthday: req.body.birthday
                             },config.jwt_secret , { expiresIn: '1' })
+
+                        res.status(200).send({
+                            success: true,
+                            data: succcess,
+                            token: tokens
                         });
 
                     })
@@ -63,7 +65,7 @@ const Register = function (req, res) {
             } else {
                 return res.status(400).send({
                     success: false,
-                    code: "EMAIL_IS_ALREADY"
+                    code: "USER_IS_ALREADY"
                 });
             }
 
