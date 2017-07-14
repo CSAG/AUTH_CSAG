@@ -6,7 +6,7 @@ import {User} from './../models/user.model'
 import JWT from 'jsonwebtoken'
 
 const envd  = process.env.NODE_ENV || 'development';
-const configd    = require('./../config/config.json')[env];
+const configd    = require('./../config/config.json')[envd];
 const config    = require('./../config/config.json')[configd.env];
 const Login = function (req, res) {
 
