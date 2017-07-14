@@ -3,8 +3,8 @@ import express      from 'express';
 import path         from 'path';
 import bodyParser from 'body-parser';
 import routes       from './routes';
-var env  = process.env.NODE_ENV || 'development';
-global.env = env;
+
+
 //using let
 let app = express();
 app.use(bodyParser.urlencoded({ extended: true }));

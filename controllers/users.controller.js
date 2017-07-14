@@ -4,8 +4,9 @@
 import Validator from 'validatorjs';
 import {User} from './../models/user.model'
 import JWT from 'jsonwebtoken'
-
-const config    = require('./../config/config.json')[env];
+const envd  = process.env.NODE_ENV || 'development';
+const configd    = require('./../config/config.json')[env];
+const config    = require('./../config/config.json')[configd.env];
 const Users = function (req, res) {
 
     // verifies secret and checks exp
