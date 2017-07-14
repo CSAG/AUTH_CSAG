@@ -4,7 +4,7 @@
 import Validator from 'validatorjs';
 import {User} from './../models/user.model'
 import JWT from 'jsonwebtoken'
-const env       = process.env.NODE_ENV || 'development';
+
 const config    = require('./../config/config.json')[env];
 const Login = function (req, res) {
 
