@@ -17,8 +17,9 @@
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "auth_service",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "jwt_secret": "JnLRmvCURZFqHeJiYksaCwdqjwndUBMeNHbvp7z9zvw8QMU4LugZpyXInADb"
   }
 }
