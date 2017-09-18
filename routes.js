@@ -9,7 +9,7 @@ import Users from  './controllers/users.controller'
 router.get('/', Main);
 router.post('/register', Register);
 router.post('/login', Login);
-router.post('/users', Users);
+router.post('/users/:action', Users);
 
 
 module.exports = router;
