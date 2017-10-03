@@ -13,6 +13,8 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "fs": "0.0.1-security",
+    "ignore-case": "^0.1.0",
     "jsonwebtoken": "^7.4.0",
     "morgan": "~1.8.1",
     "mysql": "^2.13.0",
